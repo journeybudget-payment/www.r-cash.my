@@ -1,0 +1,107 @@
+:root {
+  --rc-purple: #8b5cf6;
+  --rc-purple-light: #a78bfa;
+  --rc-purple-deep: #5b2d8e;
+  --rc-purple-ink: #3a1b5e;
+  --rc-purple-night: #2d1549;
+  --rc-night: #1e0e33;
+  --rc-lime: #ccff33;
+  --rc-red: #e63946;
+  --rc-red-light: #ff6b7a;
+  --rc-surface: #f3f0f7;
+  --rc-border: #d8cfe6;
+  --rc-muted: #a1a1aa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f8f9fa;
+  -webkit-font-smoothing: antialiased;
+}
+
+.layout-background { background: #f8f9fa !important; }
+.page-container { background: #f8f9fa; }
+
+.sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  color: var(--rc-purple);
+  background: rgba(139, 92, 246, .1);
+  border-radius: 100px;
+  padding: .4rem 1rem;
+  margin-bottom: 1rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.sec-title {
+  color: var(--rc-purple-ink);
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin: 0 0 .75rem;
+
+  @media (max-width: 640px) { font-size: 1.65rem; }
+}
+
+.sec-sub {
+  color: var(--rc-purple-deep);
+  max-width: 540px;
+  margin: 0 0 3rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .9rem 2.25rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+  color: var(--rc-night);
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all .25s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
+    transform: skew(-20deg);
+    animation: btn-shine 3s ease-in-out infinite;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, #8b5cf6, #5b2d8e);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(91, 45, 142, .35), 0 0 20px rgba(139, 92, 246, .3);
+  }
+}
+
+@keyframes btn-shine {
+  0% { left: -100%; }
+  50%, 100% { left: 150%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
