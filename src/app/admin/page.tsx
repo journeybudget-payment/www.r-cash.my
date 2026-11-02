@@ -19,6 +19,9 @@ export default async function AdminPage() {
           <form action="/api/admin/logout" method="post">
             <button className="rounded-full border border-[#e1e6df] bg-white px-5 py-2.5 text-sm font-bold">Log keluar</button>
           </form>
+        <Link href="/admin/pins" className="rounded-full border border-[#e1e6df] bg-white px-5 py-2.5 text-sm font-bold">
+             Jejak PIN
+        </Link>
         </div>
 
         <div className="mb-8 grid gap-3 sm:grid-cols-3">
