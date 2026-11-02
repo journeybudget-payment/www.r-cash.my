@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #f1faf4;
+  --color-brand-100: #dcf5e5;
+  --color-brand-200: #bbe9cd;
+  --color-brand-300: #8ed6ad;
+  --color-brand-400: #55bb85;
+  --color-brand-500: #12a05f;
+  --color-brand-600: #0e7c4a;
+  --color-brand-700: #0b5d3b;
+  --color-brand-800: #0b3d27;
+  --color-brand-900: #072b1b;
+  --color-brand-950: #041a10;
+  --color-lime-accent: #b6f24a;
+  --color-lime-soft: #d9fba8;
+  --color-cream: #f6f7f2;
+  --color-ink: #0a1410;
+  --color-body: #4b5a52;
+
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-ticker: marquee 24s linear infinite;
+  --animate-bob: bob 5s ease-in-out infinite;
+}
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes bob { 50% { transform: translateY(-9px); } }
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-cream text-ink font-sans antialiased; }
+  h1, h2, h3, h4 { @apply font-extrabold tracking-tight; }
+  ::selection { @apply bg-lime-soft text-brand-900; }
+}
+
+@utility container-page { @apply mx-auto w-full max-w-[1180px] px-5; }
+
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
+.reveal.is-in { opacity: 1; transform: none; }
+
+input[type="range"] { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 99px;
+  background: linear-gradient(90deg, var(--color-brand-500) var(--fill, 60%), #e1e6df var(--fill, 60%)); }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
+  background: #fff; border: 3px solid var(--color-brand-600); box-shadow: 0 4px 12px rgb(7 43 27 / .25); cursor: pointer; }
+input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #fff;
+  border: 3px solid var(--color-brand-600); cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001s !important; transition-duration: .001s !important; }
+  .reveal { opacity: 1; transform: none; }
+}
