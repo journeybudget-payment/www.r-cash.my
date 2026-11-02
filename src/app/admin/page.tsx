@@ -36,12 +36,38 @@ export default async function AdminPage() {
 
         <div className="overflow-x-auto rounded-2xl border border-[#e1e6df] bg-white">
           <table className="w-full text-left text-sm">
-            <thead className="bg-brand-50 text-[.75rem] uppercase tracking-[.08em] text-brand-800">
-              <tr>
-                {["Rujukan", "Nama", "Telefon", "Jumlah", "Tempoh", "Status", "Masa"].map((h) => (
-                  <th key={h} className="px-4 py-3">{h}</th>
-                ))}
-              </tr>
+            const badge: Record<string, string> = {
+            lulus: "bg-brand-100 text-brand-800",
+            tolak: "bg-[#fde8e5] text-[#c4321f]",
+            semak: "bg-[#fff3d6] text-[#8a5b00]",
+            baru: "bg-cream text-body"
+          };
+              <thead className="bg-brand-50 text-[.75rem] uppercase tracking-[.08em] text-brand-800">
+  <tr>
+    {["Rujukan", "Nama", "Jumlah", "Skor", "Status", "Tindakan"].map((h) => (
+      <th key={h} className="px-4 py-3">{h}</th>
+    ))}
+  </tr>
+</thead>
+<tbody>
+  {rows.map((r) => (
+    <tr key={r.id} className="border-t border-[#e1e6df] align-top">
+      <td className="px-4 py-3 font-mono text-xs">{r.ref}</td>
+      <td className="px-4 py-3">
+        {r.name}
+        <small className="block text-[.7rem] text-body">{r.phone}</small>
+      </td>
+      <td className="px-4 py-3">{rm(r.amount)}<small className="block text-[.7rem] text-body">{r.tenure} bln</small></td>
+      <td className="px-4 py-3">{r.score ?? "—"}</td>
+      <td className="px-4 py-3">
+        <span className={`rounded-full px-2.5 py-1 text-[.7rem] font-bold ${badge[r.status] ?? badge.baru}`}>
+          {r.status}
+        </span>
+      </td>
+      <td className="px-4 py-3"><DecisionPanel id={r.id} status={r.status} /></td>
+    </tr>
+  ))}
+</tbody>
             </thead>
             <tbody>
               {rows.length === 0 && (
