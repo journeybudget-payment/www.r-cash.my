@@ -6,16 +6,28 @@
   <meta name="description" content="R Cash - Pinjaman peribadi pantas & selamat di Malaysia. Kelulusan 5 minit, terma telus.">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
-  <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#1e0e33">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    html, body, #q-app { min-height: 100%; margin: 0; }
+    .app-loading { min-height: 100vh; display: grid; place-content: center; gap: 12px; padding: 24px; box-sizing: border-box; text-align: center; color: #1e0e33; font: 16px/1.5 Arial, sans-serif; }
+    .app-loading p { margin: 0; }
+  </style>
 </head>
 <body class="body--light">
-  <div id="q-app"></div>
+  <div id="q-app" role="status" aria-live="polite">
+    <main class="app-loading">
+      <p>R Cash sedang dimuatkan…</p>
+    </main>
+  </div>
+  <noscript>
+    <p class="app-loading">Sila aktifkan JavaScript pada pelayar anda untuk menggunakan laman web R Cash.</p>
+  </noscript>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
